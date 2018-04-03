@@ -24,7 +24,7 @@ module CSQL
       if column == "*"
         columns = File.open(@filepath,'r').gets.chomp.split(',').map{|c|c.strip}
       else
-        columns = column.chomp.split(',').map{|c|c.gsub('`','').split(/as|AS/).last.strip}
+        columns = column.chomp.split(',').map{|c|c.gsub('`','').split(/ (as|AS) /).last.strip}
       end
       return result.chomp.split("\n").map{|r|
         data = r.split(",")
